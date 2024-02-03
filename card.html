@@ -31,10 +31,22 @@
         display: flex;
         gap: 5px;
     }
+
+    .container {
+        display: flex;
+    }
 </style>
 <body>
-<div id="deck" class="card back">52</div>
-<div id="sheriff" class="card back">Sheriff</div>
+<div class="container">
+    <div id="deck" class="card back">52</div>
+    <button onclick="redraw()">Redraw</button>
+    <button onclick="robbery()">Robbery</button>
+    <div id="discard" class="card">Discard</div>
+    <button onclick="shuffleAll()">Reset</button>
+</div>
+<div class="container">
+    <div id="sheriff" class="card back">Sheriff</div>
+</div>
 <div id="cards">
     <div class="card"></div>
     <div class="card"></div>
@@ -42,33 +54,83 @@
 </div>
 </body>
 <script>
-    var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"];
-    var suits = ["c", "d", "s", "h"];
+    const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"];
+    const suits = ["c", "d", "s", "h"];
     var deck = [];
     var deckEl = document.getElementById("deck");
+    var discard = [];
+    var discardEl = document.getElementById("discard");
+    var activeCards = [];
     // init deck
     for (let val of values) {
         for (let suit of suits) {
             deck.push(val + suit);
         }
     }
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
-    shuffleArray(deck);
-    var sheriff = deck.pop();
-    var sheriffEl = document.getElementById("sheriff");
-    deckEl.innerText = deck.length;
-    deckEl.onclick = () => {
-        let cards = document.getElementById("cards");
-        for (let i = 0; i < 3; i++) {
-            let card = deck.pop()
-            cards.children[i].style.backgroundImage = `url('assets/deck/${card}.jpg')`
-        }
+
+    function drawCard() {
+        let card = deck.pop();
         deckEl.innerText = deck.length;
+        return card;
+    }
+
+    function discardCard(card) {
+        discard.push(card);
+        setCard(discardEl, card);
+    }
+
+    function setCard(el, card) {
+        if (card)
+            el.style.backgroundImage = `url('assets/deck/${card}.jpg')`;
+        else
+            el.style.backgroundImage = "";
+    }
+
+    function clearActive() {
+        while (activeCards.length > 0) {
+            discardCard(activeCards.pop());
+        }
+    }
+
+    function shuffleAll() {
+        clearActive();
+        deck.push(...discard);
+        deck.push(sheriff);
+        discard = [];
+        shuffleArray(deck);
+        // sheriff
+        sheriff = drawCard();
+        sheriffEl.classList.add("back");
+        setCard(sheriffEl, null);
+        // reset stacks
+        setCard(discardEl, null);
+        for (let i = 0; i < 3; i++) {
+            setCard(cardsEl.children[i], null);
+        }
+    }
+
+    shuffleArray(deck);
+    var sheriff = drawCard();
+    var sheriffEl = document.getElementById("sheriff");
+    var cardsEl = document.getElementById("cards");
+    function redraw() {
+        clearActive();
+        for (let i = 0; i < 3; i++) {
+            let card = drawCard();
+            setCard(cardsEl.children[i], card);
+            activeCards.push(card);
+        }
+    }
+    function robbery() {
+        let card = drawCard();
+        discardCard(card);
     }
     sheriffEl.onclick = () => {
         sheriffEl.innerText = "";
