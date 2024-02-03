@@ -1,0 +1,1 @@
+All image rights belong to Write Stuff Games.
