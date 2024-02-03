@@ -34,6 +34,7 @@
 </style>
 <body>
 <div id="deck" class="card back">52</div>
+<div id="sheriff" class="card back">Sheriff</div>
 <div id="cards">
     <div class="card"></div>
     <div class="card"></div>
@@ -44,20 +45,35 @@
     var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "j", "q", "k", "a"];
     var suits = ["c", "d", "s", "h"];
     var deck = [];
+    var deckEl = document.getElementById("deck");
     // init deck
     for (let val of values) {
         for (let suit of suits) {
             deck.push(val + suit);
         }
     }
-    document.getElementById("deck").onclick = () => {
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    shuffleArray(deck);
+    var sheriff = deck.pop();
+    var sheriffEl = document.getElementById("sheriff");
+    deckEl.innerText = deck.length;
+    deckEl.onclick = () => {
         let cards = document.getElementById("cards");
         for (let i = 0; i < 3; i++) {
-            let index = Math.floor(Math.random() * deck.length);
-            let card = deck.splice(index, 1);
+            let card = deck.pop()
             cards.children[i].style.backgroundImage = `url('assets/deck/${card}.jpg')`
         }
-        document.getElementById("deck").innerText = deck.length;
+        deckEl.innerText = deck.length;
+    }
+    sheriffEl.onclick = () => {
+        sheriffEl.innerText = "";
+        sheriffEl.classList.remove("back");
+        sheriffEl.style.backgroundImage = `url('assets/deck/${sheriff}.jpg')`
     }
 </script>
 </html>
