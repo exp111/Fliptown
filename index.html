@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fliptown</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .map {
+        background-image: url("assets/map/merged.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: calc(100vw);
+        height: calc(100vw * 0.5001041016);
+    }
+
+    .map .check {
+        cursor: pointer;
+        position: fixed;
+    }
+</style>
+<body>
+<div id="map" class="map">
+</div>
+</body>
+<script>
+    var map = document.getElementById("map");
+
+    function checkbox(id, x, y, threeState = false) {
+        let check = document.createElement("input");
+        check.id = id;
+        check.type = "checkbox";
+        check.onclick = (e) => {
+            if (threeState) {
+                if (check.readOnly) check.checked=check.readOnly=false;
+                else if (!check.checked) check.readOnly=check.indeterminate=true;
+            }
+        }
+        check.classList.add("check");
+        check.style.left = x;
+        check.style.top = y;
+        check.checked = false;
+        map.appendChild(check);
+    }
+    function trail() {
+        let trail1 = checkbox("trail1", "10%", "10%", true);
+        let trail2 = checkbox("trail2", "20%", "10%", false)
+    }
+
+    function cash() {
+        let first = checkbox("cash1", "20%", "90%", true);
+    }
+
+    trail();
+    cash();
+</script>
+</html>
