@@ -22,11 +22,15 @@
     .map input {
         position: absolute;
         transform: translate(-50%, -50%);
+        margin: 0;
     }
 
-    .map .check {
+    .map > .check {
         cursor: pointer;
         /*TODO: style*/
+        appearance: none;
+        border: 0.15em solid black;
+        border-radius: 0.15em;
     }
 
     /*TODO: num input styling*/
@@ -83,6 +87,9 @@
         check.style.top = `${y / 2402 * 100}%`;
         check.checked = false;
         map.appendChild(check);
+        let label = document.createElement("label");
+        label.htmlFor = check.id;
+        map.appendChild(label);
         return check;
     }
 
@@ -132,21 +139,19 @@
     function trail() {
         //TODO: bonus
         //TODO: trail entries
-        let trail1 = checkbox("trail", "1", 10, 10, true);
-        let trail2 = checkbox("trail", "2", 20, 10, false)
     }
 
     function poker() {
         for (let x = 0; x < 3; x++) {
             for (let y = 0; y < 5; y++) {
-                textbox("poker", `${x}${y}`, 3690 + (x * 386), 241 + (y * 81), 1);
+                textbox("poker", `${x}${y}`, 3693 + (x * 386), 241 + (y * 81), 1);
             }
         }
 
         for (let x = 0; x < 3; x++) {
             for (let y = 0; y < 5; y++) {
                 for (let g = 0; g < 4; g++) {
-                    radio("poker", `poker${x}${y}`, `${x}${y}${g}`, 3756 + (x * 386) + (g * 62.5), 235 + (y * 81), 1);
+                    radio("poker", `poker${x}${y}`, `${x}${y}${g}`, 3766 + (x * 386) + (g * 62.5), 241 + (y * 81), 1);
                 }
             }
         }
@@ -159,7 +164,7 @@
                 if (x == 1 && y == 1) // center one is always unlocked
                     continue;
 
-                checkbox("cemetery", `${x}${y}`, 3727 + (x * 215), 1070 + (y * 230), false);
+                checkbox("cemetery", `${x}${y}`, 3731 + (x * 215), 1074 + (y * 230), false);
             }
         }
     }
@@ -167,7 +172,7 @@
     function cash() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 7; y++) {
-                checkbox("cash", `${x}${y}`, 178 + (x * 94), 1794 + (y * 73.5), true);
+                checkbox("cash", `${x}${y}`, 188 + (x * 94), 1800 + (y * 73.5), true);
             }
         }
     }
@@ -175,7 +180,7 @@
     function gold() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 5; y++) {
-                checkbox("gold", `${x}${y}`, 1358 + (x * 98), 1794 + (y * 76), true);
+                checkbox("gold", `${x}${y}`, 1366 + (x * 98), 1798 + (y * 76), true);
             }
         }
     }
@@ -183,7 +188,7 @@
     function stars() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 7; y++) {
-                checkbox("star", `${x}${y}`, 2592 + (x * 91.5), 1794 + (y * 73.5), true);
+                checkbox("star", `${x}${y}`, 2600 + (x * 91.5), 1798 + (y * 73.5), true);
             }
         }
     }
@@ -191,17 +196,17 @@
     function wanted() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 3; y++) {
-                checkbox("wanted", `${x}${y}`, 3753 + (x * 100), 1800 + (y * 95), true);
+                checkbox("wanted", `${x}${y}`, 3761 + (x * 100), 1805 + (y * 95), true);
             }
         }
     }
 
     function scoring() {
         for (let x = 0; x < 4; x++) {
-            checkbox("goldpan", `${x}`, 3833 + (x * 80), 2192, false);
+            checkbox("goldpan", `${x}`, 3841 + (x * 80), 2198, false);
         }
         for (let x = 0; x < 4; x++) {
-            checkbox("hammer", `${x}`, 4334 + (x * 72), 2192, false);
+            checkbox("hammer", `${x}`, 4338 + (x * 72), 2196, false);
         }
 
         // individual scores
