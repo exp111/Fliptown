@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+</style>
+<body>
+<div id="container"></div>
+</body>
+<script src="include/konva.min.js"></script>
+<script>
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height,
+        draggable: false,
+    });
+    var layer = new Konva.Layer();
+    stage.add(layer);
+    Konva.Image.fromURL("assets/map/merged.jpg", function (img) {
+        img.setAttrs({
+            width: stage.width(),
+            height: stage.height(),
+        });
+        layer.add(img);
+
+        var circle = new Konva.Circle({
+            x: stage.width() / 2,
+            y: stage.height() / 2,
+            radius: 5,
+            fill: 'red',
+        });
+        layer.add(circle);
+    });
+</script>
+</html>

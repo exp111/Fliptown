@@ -23,6 +23,7 @@
         position: absolute;
         transform: translate(-50%, -50%);
     }
+
     .map .check {
         cursor: pointer;
         /*TODO: style*/
@@ -30,14 +31,21 @@
 
     /*TODO: num input styling*/
 
-    .cemetery {
-        width: 2%;
-        height: 4%;
+    .poker {
+        width: 0.6%;
+        height: 2.3%;
     }
+
+    .cemetery {
+        width: 3%;
+        height: 6%;
+    }
+
     .cash, .gold, .star, .goldpan, .hammer {
         width: 1%;
         height: 2%;
     }
+
     .wanted {
         width: 1.5%;
         height: 3%;
@@ -86,11 +94,54 @@
         return num;
     }
 
+    function textbox(type, id, x, y, length = null) {
+        let text = document.createElement("input");
+        text.id = `${type}-${id}`;
+        text.type = "text";
+        text.classList.add("textbox");
+        text.classList.add(type);
+        text.style.left = `${x / 4803 * 100}%`;
+        text.style.top = `${y / 2402 * 100}%`;
+        if (length != null)
+            text.maxLength = length;
+        map.appendChild(text);
+        return text;
+    }
+
+    function radio(type, name, id, x, y) {
+        let radio = document.createElement("input");
+        radio.id = `${type}-${id}`;
+        radio.type = "radio";
+        radio.name = name;
+        radio.classList.add("radio");
+        radio.classList.add(type);
+        radio.style.left = `${x / 4803 * 100}%`;
+        radio.style.top = `${y / 2402 * 100}%`;
+        map.appendChild(radio);
+        return radio;
+    }
+
     function trail() {
         //TODO: bonus
         //TODO: trail entries
         let trail1 = checkbox("trail", "1", 10, 10, true);
         let trail2 = checkbox("trail", "2", 20, 10, false)
+    }
+
+    function poker() {
+        for (let x = 0; x < 3; x++) {
+            for (let y = 0; y < 5; y++) {
+                textbox("poker", `${x}${y}`, 3690 + (x * 386), 241 + (y * 81), 1);
+            }
+        }
+
+        for (let x = 0; x < 3; x++) {
+            for (let y = 0; y < 5; y++) {
+                for (let g = 0; g < 4; g++) {
+                    radio("poker", `poker${x}${y}`, `${x}${y}${g}`, 3756 + (x * 386) + (g * 62.5), 235 + (y * 81), 1);
+                }
+            }
+        }
     }
 
     function cemetery() {
@@ -100,7 +151,7 @@
                 if (x == 1 && y == 1) // center one is always unlocked
                     continue;
 
-                checkbox("cemetery", `${x}${y}`, 3727+(x*215), 1070+(y*230), false);
+                checkbox("cemetery", `${x}${y}`, 3727 + (x * 215), 1070 + (y * 230), false);
             }
         }
     }
@@ -112,6 +163,7 @@
             }
         }
     }
+
     function gold() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 5; y++) {
@@ -152,6 +204,7 @@
     }
 
     trail();
+    poker();
     cemetery();
     cash();
     gold();
