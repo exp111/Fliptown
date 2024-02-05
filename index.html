@@ -16,13 +16,23 @@
         position: relative;
         width: 100vw;
         height: 0;
-        padding-bottom: calc(100% / (4803/2402));
+        padding-bottom: calc(100% / (4803 / 2402));
     }
 
     .map .check {
         cursor: pointer;
         position: absolute;
         transform: translate(-50%, -50%);
+        /*TODO: style*/
+    }
+
+    .cash, .gold, .star {
+        width: 1%;
+        height: 2%;
+    }
+    .wanted {
+        width: 1.5%;
+        height: 3%;
     }
 </style>
 <body>
@@ -32,40 +42,65 @@
 <script>
     var map = document.getElementById("map");
 
-    function checkbox(id, x, y, threeState = false) {
+    function checkbox(type, id, x, y, threeState = false) {
         let check = document.createElement("input");
-        check.id = id;
+        check.id = `${type}-${id}`;
         check.type = "checkbox";
         check.onclick = (e) => {
             if (threeState) {
-                if (check.readOnly) check.checked=check.readOnly=false;
-                else if (!check.checked) check.readOnly=check.indeterminate=true;
+                if (check.readOnly) check.checked = check.readOnly = false;
+                else if (!check.checked) check.readOnly = check.indeterminate = true;
             }
         }
         check.classList.add("check");
-        check.style.left = x;
-        check.style.top = y;
+        check.classList.add(type);
+        check.style.left = `${x / 4803 * 100}%`;
+        check.style.top = `${y / 2402 * 100}%`;
         check.checked = false;
         map.appendChild(check);
         return check;
     }
+
     function trail() {
-        let trail1 = checkbox("trail1", "100px", "10%", true);
-        let trail2 = checkbox("trail2", "10vw", "10%", false)
+        let trail1 = checkbox("trail", "1", 10, 10, true);
+        let trail2 = checkbox("trail", "2", 20, 10, false)
     }
 
     function cash() {
-        let box = map.getBoundingClientRect();
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 7; y++) {
-                checkbox(`cash${x}${y}`, `${(173.4/4803)*100+x*(93.9/4803)*100}%`, `${74+y*3}.5%`, true);
-                //checkbox(`cash${x}${y}`, `${box.width*((178+(x*94))/4803)}px`, `${box.height*(1790+(y*74))/2402}px`, true);
+                checkbox("cash", `${x}${y}`, 178 + (x * 94), 1794 + (y * 73.5), true);
             }
         }
+    }
+    function gold() {
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 5; y++) {
+                checkbox("gold", `${x}${y}`, 1358 + (x * 98), 1794 + (y * 76), true);
+            }
+        }
+    }
 
+    function stars() {
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 7; y++) {
+                checkbox("star", `${x}${y}`, 2592 + (x * 91.5), 1794 + (y * 73.5), true);
+            }
+        }
+    }
+
+    function wanted() {
+        for (let x = 0; x < 10; x++) {
+            for (let y = 0; y < 3; y++) {
+                checkbox("wanted", `${x}${y}`, 3753 + (x * 100), 1800 + (y * 95), true);
+            }
+        }
     }
 
     trail();
     cash();
+    gold();
+    stars();
+    wanted();
 </script>
 </html>
