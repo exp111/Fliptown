@@ -25,12 +25,20 @@
         margin: 0;
     }
 
-    .map > .check {
+    .check {
         cursor: pointer;
         /*TODO: style*/
         appearance: none;
-        border: 0.15em solid black;
-        border-radius: 0.15em;
+        border-radius: 100%;
+    }
+    .check:checked, .check:indeterminate {
+        border: 3px solid black;
+    }
+    .check:indeterminate:after {
+        content: "\2718";
+        color: red;
+        line-height: 100%;
+        font-size: 1.5vw;
     }
 
     /*TODO: num input styling*/
@@ -46,8 +54,8 @@
     }
 
     .cash, .gold, .star, .goldpan, .hammer {
-        width: 1%;
-        height: 2%;
+        width: 1.5%;
+        height: 3%;
     }
 
     .wanted {
@@ -172,7 +180,7 @@
     function cash() {
         for (let x = 0; x < 10; x++) {
             for (let y = 0; y < 7; y++) {
-                checkbox("cash", `${x}${y}`, 188 + (x * 94), 1800 + (y * 73.5), true);
+                checkbox("cash", `${x}${y}`, 187 + (x * 94), 1800 + (y * 73.5), true);
             }
         }
     }
