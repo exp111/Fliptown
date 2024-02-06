@@ -72,10 +72,14 @@
     border: 2px solid black;
     border-radius: 100%;
 }
-
+/* Cemetery */
 .cemetery {
     width: 3%;
     height: 6%;
+}
+.cemetery.bonus {
+    width: 2%;
+    height: 4%;
 }
 
 .cash, .gold, .star, .score.goldpan, .score.hammer {

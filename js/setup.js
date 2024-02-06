@@ -129,11 +129,16 @@ function poker() {
 }
 
 function cemetery() {
-    //TODO: bonus
+    // bonus
+    checkbox("cemetery", "bonus", "0", 3699, 949, false);
+    checkbox("cemetery", "bonus", "1", 4142, 952, false);
+
+    // graves
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
             if (x == 1 && y == 1) // center one is always unlocked
                 continue;
+            //TODO: manually adjust x for each column
 
             checkbox("cemetery", "grave", `${x}${y}`, 3731 + (x * 215), 1074 + (y * 230), false);
         }
@@ -191,6 +196,8 @@ function scoring() {
 function setup() {
     trail();
     badlands();
+    //TODO: mine
+    //TODO: town
     poker();
     cemetery();
     cash();
