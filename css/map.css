@@ -78,7 +78,7 @@
     height: 6%;
 }
 
-.cash, .gold, .star, .goldpan, .hammer {
+.cash, .gold, .star, .score.goldpan, .score.hammer {
     width: 1.5%;
     height: 3%;
 }
