@@ -135,10 +135,24 @@ function town() {
         let offset = offsets[i];
         checkbox("town", "action", `${i}`, offset[0], offset[1], false);
     }
-    // TODO: undertaker
-    // TODO: stable
-    // TODO: general store
-    // TODO: hotel
+    // undertaker
+    checkbox("town", "undertaker", "0", 2631, 318, false);
+    checkbox("town", "undertaker", "1", 2631, 415, false);
+    // bank
+    checkbox("town", "bank", "red", 2940, 318, false);
+    checkbox("town", "bank", "black", 3102, 318, false);
+    // stable
+    checkbox("town", "stable", "0", 2631, 675, false);
+    checkbox("town", "stable", "1", 2631, 760, false);
+    // general store
+    checkbox("town", "general", "0", 3020, 605, false);
+    checkbox("town", "general", "1", 3020, 685, false);
+    checkbox("town", "general", "2", 3020, 758, false);
+    // hotel
+    checkbox("town", "hotel", "0", 2538, 1040, false);
+    checkbox("town", "hotel", "1", 2602, 1040, false);
+    checkbox("town", "hotel", "2", 2665, 1040, false);
+    checkbox("town", "hotel", "3", 2729, 1040, false);
     // TODO: land office
     // TODO: gunsmith
     // TODO: bail bonds

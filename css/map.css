@@ -69,6 +69,38 @@
     width: 4%;
 }
 /*Town*/
+.town {
+    border: 3px solid black;
+}
+
+.undertaker, .bank, .stable, .general, .land {
+    border-radius: 0;
+    width: 5.2%;
+}
+#town-undertaker-0 {
+    height: 3%;
+}
+#town-undertaker-1 {
+    height: 4%;
+}
+.town.bank {
+    width: 3.5%;
+    height: 3.5%;
+}
+.town.stable {
+    height: 4.1%;
+}
+#town-stable-1 {
+    height: 3.3%
+}
+.town.general {
+    width: 6.7%;
+    height: 3.4%;
+}
+.town.hotel {
+    width: 1.4%;
+    height: 2.8%;
+}
 .town.bonus {
     width: 2%;
     height: 4%;
