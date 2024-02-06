@@ -39,10 +39,14 @@
         color: red;
         line-height: 100%;
         font-size: 1.5vw;
+    }/*TODO: center*/
+
+    /*Trail*/
+    .trail.check {
+        width: 2%;
+        height: 4%;
     }
-
-    /*TODO: num input styling*/
-
+    /*Poker*/
     .poker.check {
         width: 2%;
         height: 4%;
@@ -163,8 +167,16 @@
     }
 
     function trail() {
-        //TODO: bonus
-        //TODO: trail entries
+        // bonus
+        checkbox("trail", `bonus`, 311, 570, false);
+        // trail entries
+        let offsets = [[440,475], [580,470], [720,490], [855,460], [990,440], [1092,401],
+            [1325,415],[1465,412],[1595,395],[1737,440],[1875,490],[2018,477],[2163,450]
+        ];
+        for (let i in offsets) {
+            let offset = offsets[i];
+            checkbox("trail", `${i}`, offset[0], offset[1], true);
+        }
     }
 
     function poker() {
