@@ -251,7 +251,7 @@ function scoring() {
     numbox("score", "box", "1", 4038, 2305, "0");
     numbox("score", "box", "2", 4214, 2305, "0");
     numbox("score", "box", "3", 4389, 2305, "0");
-    numbox("score", "finalscore", "", 4600, 2305, "0");
+    numbox("score", "final-score", "", 4600, 2305, "0");
 }
 
 function setup() {
