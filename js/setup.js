@@ -111,14 +111,35 @@ function mine() {
     // bonus
     checkbox("mine", "bonus", "", 1510, 850);
     // mine
-    let xOffsets = [[1674,1920],[1537,1795,2048],[1428,1670,1920,2160],[1340,1550,1800,2050,2263]];
-    let yOffsets = [982,1158,1348,1558];
+    let xOffsets = [[1674, 1920], [1537, 1795, 2048], [1428, 1670, 1920, 2160], [1340, 1550, 1800, 2050, 2263]];
+    let yOffsets = [982, 1158, 1348, 1558];
     for (let y in yOffsets) {
         for (let x in xOffsets[y]) {
             checkbox("mine", `mine${y}`, `${x}${y}`, xOffsets[y][x], yOffsets[y], false);
         }
     }
+}
 
+function town() {
+    // TODO: bank on red/black
+    // bonus actions
+    let offsets = [
+        [2629, 258], [3018, 256], [3402, 350],
+        [2625, 588], [3010, 532], [3405, 581],
+        [2627, 930], [3020, 933], [3419, 893],
+        [2623, 1303], [2943, 1330], [3196, 1328], [3451, 1325]
+    ];
+    for (let i in offsets) {
+        let offset = offsets[i];
+        checkbox("town", "action", `${i}`, offset[0], offset[1], false);
+    }
+    // TODO: undertaker
+    // TODO: stable
+    // TODO: general store
+    // TODO: hotel
+    // TODO: land office
+    // TODO: gunsmith
+    // TODO: bail bonds
 }
 
 function poker() {
@@ -211,7 +232,7 @@ function setup() {
     trail();
     badlands();
     mine();
-    //TODO: town
+    town();
     poker();
     cemetery();
     cash();

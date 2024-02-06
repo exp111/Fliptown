@@ -68,6 +68,12 @@
 .mine.mine3:not(#mine-mine3-13):not(#mine-mine3-43) {
     width: 4%;
 }
+/*Town*/
+.town.action {
+    width: 2%;
+    height: 4%;
+}
+/*TODO: cross out checked actions*/
 /*Poker*/
 .poker.check {
     width: 2%;
