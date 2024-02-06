@@ -107,10 +107,24 @@ function badlands() {
     }
 }
 
+function mine() {
+    // bonus
+    checkbox("mine", "bonus", "", 1510, 850);
+    // mine
+    let xOffsets = [[1674,1920],[1537,1795,2048],[1428,1670,1920,2160],[1340,1550,1800,2050,2263]];
+    let yOffsets = [982,1158,1348,1558];
+    for (let y in yOffsets) {
+        for (let x in xOffsets[y]) {
+            checkbox("mine", `mine${y}`, `${x}${y}`, xOffsets[y][x], yOffsets[y], false);
+        }
+    }
+
+}
+
 function poker() {
     // bonus
     for (let x = 0; x < 3; x++) {
-        checkbox("poker", "bonus", `bonus-${x}`, 4030 + (x * 148), 98, false);
+        checkbox("poker", "bonus", `${x}`, 4030 + (x * 148), 98, false);
     }
     // value textboxes //TODO: instead dropdown?
     for (let x = 0; x < 3; x++) {
@@ -196,7 +210,7 @@ function scoring() {
 function setup() {
     trail();
     badlands();
-    //TODO: mine
+    mine();
     //TODO: town
     poker();
     cemetery();

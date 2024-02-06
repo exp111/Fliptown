@@ -49,6 +49,25 @@
 .badlands.check:checked {
     /*TODO: cross out instead of circle*/
 }
+/*Mine*/
+.mine.bonus {
+    width: 2%;
+    height: 4%
+}
+.mine:not(.bonus) {
+    border-radius: 0;
+    width: 3.5%;
+}
+/* individual size for mine0-3*/
+.mine0,.mine1 {
+    height: 3.5%;
+}
+.mine2,.mine3 {
+    height: 5%;
+}
+.mine.mine3:not(#mine-mine3-13):not(#mine-mine3-43) {
+    width: 4%;
+}
 /*Poker*/
 .poker.check {
     width: 2%;
