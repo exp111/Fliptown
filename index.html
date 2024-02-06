@@ -43,6 +43,10 @@
 
     /*TODO: num input styling*/
 
+    .poker.check {
+        width: 2%;
+        height: 4%;
+    }
     .poker.textbox {
         width: 0.6%;
         height: 2.3%;
@@ -164,16 +168,21 @@
     }
 
     function poker() {
+        // bonus
+        for (let x = 0; x < 3; x++) {
+            checkbox("poker", `bonus-${x}`, 4030 + (x * 148), 98, false);
+        }
+        // value textboxes //TODO: instead dropdown?
         for (let x = 0; x < 3; x++) {
             for (let y = 0; y < 5; y++) {
-                textbox("poker", `${x}${y}`, 3693 + (x * 386), 241 + (y * 81), 1);
+                textbox("poker", `box-${x}${y}`, 3693 + (x * 386), 241 + (y * 81), 1);
             }
         }
-
+        // suit radios
         for (let x = 0; x < 3; x++) {
             for (let y = 0; y < 5; y++) {
                 for (let g = 0; g < 4; g++) {
-                    radio("poker", `poker${x}${y}`, `${x}${y}${g}`, 3766 + (x * 386) + (g * 62.5), 241 + (y * 81), 1);
+                    radio("poker", `poker${x}${y}`, `suit-${x}${y}${g}`, 3766 + (x * 386) + (g * 62.5), 241 + (y * 81), 1);
                 }
             }
         }
