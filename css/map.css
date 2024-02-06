@@ -69,6 +69,10 @@
     width: 4%;
 }
 /*Town*/
+.town.bonus {
+    width: 2%;
+    height: 4%;
+}
 .town.action {
     width: 2%;
     height: 4%;

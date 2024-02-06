@@ -122,6 +122,8 @@ function mine() {
 
 function town() {
     // TODO: bank on red/black
+    checkbox("town", "bonus", "red", 2904, 108, false);
+    checkbox("town", "bonus", "red", 3087, 108, false);
     // bonus actions
     let offsets = [
         [2629, 258], [3018, 256], [3402, 350],
