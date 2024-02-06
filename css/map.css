@@ -1,0 +1,99 @@
+.map {
+    background-image: url("/assets/map/merged.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100vw;
+    height: 0;
+    padding-bottom: calc(100% / (4803 / 2402));
+}
+
+.map input {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.check {
+    cursor: pointer;
+    /*TODO: style*/
+    appearance: none;
+    border-radius: 100%;
+}
+.check:checked, .check:indeterminate {
+    border: 3px solid black;
+}
+.check:indeterminate:after {
+    content: "\2718";
+    color: red;
+    line-height: 100%;
+    font-size: 1.5vw;
+}/*TODO: center*/
+
+/*Trail*/
+.trail.check {
+    width: 2%;
+    height: 4%;
+}
+/*Badlands*/
+.badlands.bonus {
+    border: 3px solid black;
+    width: 2%;
+    height: 4%;
+}
+.badlands.robbery,.badlands.check.reward {
+    border-radius: 0;
+    width: 2%;
+    height: 4%;
+}
+/*TODO: individual width for chicken,cow,carriage,train*/
+.badlands.check:checked {
+    /*TODO: cross out instead of circle*/
+}
+/*Poker*/
+.poker.check {
+    width: 2%;
+    height: 4%;
+}
+.poker.textbox {
+    width: 0.6%;
+    height: 2.3%;
+    appearance: none;
+    border: none;
+    background: none;
+    font-weight: bold;
+}
+.poker.radio {
+    appearance: none;
+    cursor: pointer;
+    width: 1%;
+    height: 2%;
+}
+.poker.radio:checked {
+    border: 2px solid black;
+    border-radius: 100%;
+}
+
+.cemetery {
+    width: 3%;
+    height: 6%;
+}
+
+.cash, .gold, .star, .goldpan, .hammer {
+    width: 1.5%;
+    height: 3%;
+}
+
+.wanted {
+    width: 1.5%;
+    height: 3%;
+}
+
+.score {
+    width: 2%;
+    height: 2%;
+}
+.finalscore {
+    width: 3%;
+    height: 2%;
+}
