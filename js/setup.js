@@ -153,9 +153,19 @@ function town() {
     checkbox("town", "hotel", "1", 2602, 1040, false);
     checkbox("town", "hotel", "2", 2665, 1040, false);
     checkbox("town", "hotel", "3", 2729, 1040, false);
-    // TODO: land office
-    // TODO: gunsmith
-    // TODO: bail bonds
+    // land office
+    for (let x = 0; x < 3; x++) {
+        for (let y = 0; y < 3; y++) {
+            checkbox("town", "land", `${x}${y}`, 3015 + (x * 70), 1006 + (y * 72), false);
+        }
+    }
+    // gunsmith
+    checkbox("town", "gunsmith", "0", 3414, 989, false);
+    checkbox("town", "gunsmith", "0", 3414, 1099, false);
+    // bail bonds
+    checkbox("town", "bond", "0", 2557, 1423, false);
+    checkbox("town", "bond", "0", 2626, 1423, false);
+    checkbox("town", "bond", "0", 2696, 1423, false);
 }
 
 function poker() {

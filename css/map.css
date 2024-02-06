@@ -69,11 +69,7 @@
     width: 4%;
 }
 /*Town*/
-/*.town {
-    border: 3px solid black;
-}*/
-
-.undertaker, .bank, .stable, .general, .land {
+.undertaker, .bank, .stable, .general, .land, .gunsmith, .bond {
     border-radius: 0;
     width: 5.2%;
 }
@@ -100,6 +96,18 @@
 .town.hotel {
     width: 1.4%;
     height: 2.8%;
+}
+.town.land {
+    width: 1.55%;
+    height: 3.1%;
+}
+.town.gunsmith {
+    width: 4.8%;
+    height: 4%;
+}
+.town.bond {
+    width: 1%;
+    height: 3%;
 }
 .town.bonus {
     width: 2%;
